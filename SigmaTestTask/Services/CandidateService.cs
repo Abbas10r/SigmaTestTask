@@ -16,7 +16,7 @@ namespace SigmaTestTask.Services
 
         public async Task<Candidate> CreateOrUpdateCandidateAsync(Candidate candidate, CancellationToken cancellationToken)
         {
-            var existingCandidate = await _candidateRepository.GetCandidateAsync(candidate.Email, cancellationToken);
+            var existingCandidate = await _candidateRepository.GetCandidateByEmailAsync(candidate.Email, cancellationToken);
 
             if (existingCandidate is null)
             {

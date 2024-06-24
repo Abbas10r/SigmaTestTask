@@ -13,7 +13,7 @@ namespace SigmaTestTask.Repositories
         {
             _context = context;
         }
-        public async Task<Candidate> GetCandidateAsync(string email, CancellationToken cancellationToken)
+        public async Task<Candidate> GetCandidateByEmailAsync(string email, CancellationToken cancellationToken)
         {
             var candidate = await _context.Candidates.FirstOrDefaultAsync(c => c.Email == email, cancellationToken);
             return candidate;
