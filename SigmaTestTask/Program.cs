@@ -1,5 +1,9 @@
 using Microsoft.EntityFrameworkCore;
 using SigmaTestTask.Context;
+using SigmaTestTask.Repositories.Interfaces;
+using SigmaTestTask.Repositories;
+using SigmaTestTask.Services.Interfaces;
+using SigmaTestTask.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +16,9 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<CandidatesContext>(opt =>
                 opt.UseSqlServer(builder.Configuration.GetConnectionString("CandidatesContext")));
+
+builder.Services.AddScoped<ICandidateRepository, CandidateRepository>();
+builder.Services.AddScoped<ICandidateService, CandidateService>();
 
 var app = builder.Build();
 
